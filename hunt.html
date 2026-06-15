@@ -8,6 +8,14 @@
 <meta name="theme-color" content="#0d0d0f">
 <link rel="canonical" href="https://imai-design.github.io/net-ad-museum/hunt.html">
 
+<!-- PWA / iOSアプリ化 -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="広告ハント">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+
 <meta property="og:type" content="website">
 <meta property="og:title" content="広告ハント — 街の広告を捕まえて図鑑にしよう">
 <meta property="og:description" content="街の広告を写真で捕獲。レア度・図鑑・レベル・地図・シェアカード。広告版のコレクション体験。">
@@ -34,10 +42,10 @@
       <span class="brand__name">広告<span>ハント</span></span>
     </a>
     <nav class="navlinks navlinks--min">
-      <a href="index.html">博物館にもどる</a>
+      <a href="index.html">博物館</a>
       <a href="#dexSec">図鑑</a>
       <a href="#mapSec">マップ</a>
-      <a href="#wallSec">みんなの壁</a>
+      <a href="app.html">アプリにする</a>
     </nav>
   </div>
 </header>
@@ -47,10 +55,13 @@
   <div class="wrap">
     <h1>街の広告を、<br><span class="accent">捕まえよう。</span></h1>
     <p>ポスター、電車内、看板、サイネージ、アプリの広告。気になった一枚を写真で「捕獲」すると、レア度がついて、あなただけの図鑑に集まります。捕まえた場所は地図に、お気に入りはシェアカードにして投稿できます。</p>
-    <button class="catch-cta" id="catchBtn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></svg>
-      広告を捕まえる
-    </button>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+      <button class="catch-cta" id="catchBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></svg>
+        広告を捕まえる
+      </button>
+      <a class="btn btn--ghost" href="app.html" style="padding:15px 24px">ホーム画面に追加（アプリにする）</a>
+    </div>
   </div>
 </section>
 
@@ -216,5 +227,6 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script src="config.js"></script>
 <script src="hunt.js"></script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));}</script>
 </body>
 </html>

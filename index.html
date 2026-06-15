@@ -8,6 +8,14 @@
 <meta name="theme-color" content="#0d0d0f">
 <link rel="canonical" href="https://imai-design.github.io/net-ad-museum/">
 
+<!-- PWA / iOSアプリ化 -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="広告ハント">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+
 <!-- OGP -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="ネット広告博物館 — 日本のインターネット広告・名作ギャラリー">
@@ -48,8 +56,8 @@
     <nav class="navlinks">
       <a href="#gallery-sec">展示室</a>
       <a href="hunt.html">広告ハント</a>
-      <a href="#shop">ミュージアムショップ</a>
-      <a href="#about">この館について</a>
+      <a href="#shop">ショップ</a>
+      <a href="app.html">アプリにする</a>
       <a class="nav-cta" href="hunt.html">広告を捕まえる</a>
     </nav>
   </div>
@@ -146,5 +154,6 @@
 </footer>
 
 <script src="app.js"></script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));}</script>
 </body>
 </html>

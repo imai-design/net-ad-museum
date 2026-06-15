@@ -1,0 +1,24 @@
+{
+  "name": "広告ハント — ネット広告博物館",
+  "short_name": "広告ハント",
+  "description": "街の広告を写真で捕まえて図鑑にする、広告版コレクション。名作ネット広告の博物館つき。",
+  "lang": "ja",
+  "dir": "ltr",
+  "start_url": "./hunt.html?app=1",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#0d0d0f",
+  "theme_color": "#0d0d0f",
+  "categories": ["entertainment", "lifestyle", "games"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "広告を捕まえる", "short_name": "捕まえる", "url": "./hunt.html?app=1", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "名作の博物館", "short_name": "博物館", "url": "./index.html" }
+  ]
+}

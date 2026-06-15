@@ -15,9 +15,24 @@ hunt.css        … ハントのゲームUI
 hunt.js         … 捕獲・図鑑・レア度・レベル・バッジ・地図・シェアカード・共有壁
 config.js       … みんなの壁（Supabase）の設定。未設定なら端末内で完結
 setup/supabase.sql … みんなの壁を有効化するSQL（任意）
+app.html        … アプリ導入ランディング（iOS/Android手順・QR・インストールボタン）
+manifest.webmanifest … PWAマニフェスト（名称/アイコン/standalone）
+sw.js           … Service Worker（app shellをオフラインキャッシュ）
+icons/          … アプリアイコン 180/192/512/maskable
+ad-hunt.mobileconfig … iOS用Web Clipプロファイル（ワンタップ追加・任意）
 ```
 
 すべて静的ファイル。ビルド不要。`python3 -m http.server` で確認できる。
+
+## iPhoneアプリ化（PWA）
+
+App Store・Apple Developer登録なしで「ホーム画面に追加 → 全画面アプリ」として使える。
+
+- 入口は **`app.html`**（`https://imai-design.github.io/net-ad-museum/app.html`）。iOSはSafariの共有→「ホーム画面に追加」、AndroidはChromeの「インストール」。QRコードでPCからスマホへ誘導。
+- 実体は **PWA**: `manifest.webmanifest`（standalone・アイコン）＋ `sw.js`（オフラインキャッシュ）＋ iOSメタ＋ `apple-touch-icon`。`index.html`/`hunt.html`/`app.html` の3ページでSW登録。
+- iOS手順を省きたい人向けに **Web Clipプロファイル** `ad-hunt.mobileconfig`（URLをホーム画面に置くだけ・署名なし）も配布。
+- **App Storeに本当に出す場合**: Apple Developer Program（年額）登録 → Capacitor等でこのWebをラップ → 審査。PWAはその前段として今すぐ配布できる無料の形。
+- アイコンを変えるには `icons/` のPNGを差し替えるだけ（180=apple-touch / 192・512=PWA / maskable=Android）。
 
 ## 広告ハント（参加型UGC）
 
