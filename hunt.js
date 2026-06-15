@@ -232,6 +232,38 @@ function renderMap() {
 }
 
 /* ===========================================================
+   ネイティブ橋渡し（iOS/Androidアプリ時のみ。Webは従来動作）
+   App内ではCapacitorのネイティブAPIを使う＝審査の「最低限の機能(4.2)」対策
+   =========================================================== */
+function isNative() {
+  return !!(window.Capacitor && typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform());
+}
+function hapticSuccess() {
+  try { if (isNative()) window.Capacitor.Plugins.Haptics.notification({ type: "SUCCESS" }); } catch (e) {}
+}
+async function nativeCapture(source) {
+  try {
+    const { Camera } = window.Capacitor.Plugins;
+    const photo = await Camera.getPhoto({ quality: 85, allowEditing: false, resultType: "dataUrl", source: source || "CAMERA", saveToGallery: false });
+    await new Promise(res => {
+      const img = new Image();
+      img.onload = () => { pendingPhoto = compressToDataURL(img); showPreview(); res(); };
+      img.onerror = res;
+      img.src = photo.dataUrl;
+    });
+  } catch (e) { /* キャンセル等 */ }
+}
+async function nativeLocation() {
+  try {
+    const { Geolocation } = window.Capacitor.Plugins;
+    $("locText").textContent = "取得中…";
+    const pos = await Geolocation.getCurrentPosition({ enableHighAccuracy: false, timeout: 8000 });
+    pendingLoc = { lat: +pos.coords.latitude.toFixed(5), lng: +pos.coords.longitude.toFixed(5) };
+    $("locText").textContent = `現在地を記録（${pendingLoc.lat}, ${pendingLoc.lng}）`;
+  } catch (e) { $("locText").textContent = "位置情報を取得できませんでした"; }
+}
+
+/* ===========================================================
    捕獲フロー
    =========================================================== */
 function openCapture() {
@@ -255,6 +287,7 @@ function updateSaveState() {
 }
 
 async function startCamera() {
+  if (isNative()) return nativeCapture("CAMERA");
   try {
     camStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" }, audio: false });
     const v = $("camVideo");
@@ -292,6 +325,7 @@ function showPreview() {
 }
 
 function useLocation() {
+  if (isNative()) return nativeLocation();
   if (!navigator.geolocation) { alert("この端末では位置情報が使えません。"); return; }
   $("locText").textContent = "取得中…";
   navigator.geolocation.getCurrentPosition(
@@ -335,6 +369,7 @@ function saveCatch() {
 
 /* ---------- GET 演出 ---------- */
 function showGet(c) {
+  hapticSuccess();
   const xp = (XP_BY[c.rarity] || 10) + (c.holo ? HOLO_BONUS : 0);
   $("getRaysImg").src = c.img;
   const tag = $("getTag"); tag.className = "get-tag r-" + c.rarity;
