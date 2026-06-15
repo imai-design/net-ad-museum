@@ -7,12 +7,25 @@
 ## 構成
 
 ```
-index.html    … 博物館本体（ヒーロー／展示室／ミュージアムショップ／About）
-style.css    … デザインシステム（美術館テイスト・絵文字不使用）
-app.js       … 展示データ・描画・フィルター・アフィリエイト設定
+index.html      … 博物館本体（ヒーロー／展示室／ミュージアムショップ／About）
+style.css       … デザインシステム（美術館テイスト・絵文字不使用）
+app.js          … 展示データ・描画・フィルター・アフィリエイト設定
+hunt.html       … 広告ハント（参加型・街の広告を捕まえて図鑑にする）
+hunt.css        … ハントのゲームUI
+hunt.js         … 捕獲・図鑑・レア度・レベル・バッジ・地図・シェアカード・共有壁
+config.js       … みんなの壁（Supabase）の設定。未設定なら端末内で完結
+setup/supabase.sql … みんなの壁を有効化するSQL（任意）
 ```
 
 すべて静的ファイル。ビルド不要。`python3 -m http.server` で確認できる。
+
+## 広告ハント（参加型UGC）
+
+街・電車・店頭・アプリで見かけた広告を写真で「捕獲」→ レア度（N/R/SR/UR・まれにキラ）→ 図鑑・レベル・バッジ・捕獲マップ・SNS用シェアカード。
+
+- 既定では**端末内（localStorage）で完結**。写真はサーバーに送られない＝鍵なしで今すぐ遊べる／安全。
+- **みんなの壁（全員共有フィード）** を使うには、無料のSupabaseを用意して `config.js` に `supabaseUrl` と `supabaseAnonKey` を貼り、`setup/supabase.sql` を実行するだけ（anonキーは公開可・RLSで保護）。設定されると `hunt.html` の「みんなの壁」と各捕獲の「みんなの壁に投稿」が自動で点灯する。
+- カメラは getUserMedia（HTTPS必須＝GitHub Pages本番でOK）。地図は Leaflet＋OpenStreetMap（鍵不要）。
 
 ## 収益（アフィリエイト）の設定
 
