@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ネット広告博物館 — 日本のインターネット広告・名作ギャラリー</title>
+<meta name="description" content="UNIQLOCK、森の木琴、メーク女子高生、桃太郎、三太郎、アオハルかよ。日本のインターネット広告の伝説的キャンペーンを年代別に展示し、なぜ伝説になったのかを解説するキュレーション博物館。">
+<meta name="theme-color" content="#0d0d0f">
+<link rel="canonical" href="https://imai-design.github.io/net-ad-museum/">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ネット広告博物館 — 日本のインターネット広告・名作ギャラリー">
+<meta property="og:description" content="日本のネット広告の伝説を年代別に展示。なぜ語り継がれるのかを解説するキュレーション博物館。">
+<meta property="og:url" content="https://imai-design.github.io/net-ad-museum/">
+<meta property="og:site_name" content="ネット広告博物館">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- favicon (SVG, 絵文字不使用) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0d0f'/%3E%3Cpath d='M11 9v14l11-7z' fill='%23c8a96a'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- 構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "ネット広告博物館",
+  "description": "日本のインターネット広告の名作・伝説的キャンペーンを年代別に展示するキュレーション博物館。",
+  "inLanguage": "ja",
+  "url": "https://imai-design.github.io/net-ad-museum/"
+}
+</script>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="#top">
+      <svg class="brand__mark" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#17171b" stroke="#2a2a31"/><path d="M11 9v14l11-7z" fill="#c8a96a"/></svg>
+      <span class="brand__name">ネット広告<span>博物館</span></span>
+    </a>
+    <nav class="navlinks">
+      <a href="#gallery-sec">展示室</a>
+      <a href="#shop">ミュージアムショップ</a>
+      <a href="#about">この館について</a>
+      <a class="nav-cta" href="#shop">学びを手に入れる</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="hero__eyebrow">The Museum of Japanese Internet Advertising</p>
+    <h1>その広告は、<br>なぜ<span class="accent">語り継がれる</span>のか。</h1>
+    <p class="hero__lead">UNIQLOCK、森の木琴、メーク女子高生、桃太郎、三太郎、アオハルかよ。<br>画面の中で人々を動かしてきた日本のインターネット広告を一堂に集め、「なぜ伝説になったのか」を一作ずつ解説する、ひとつの博物館。</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#gallery-sec">展示室へ入る</a>
+      <a class="btn btn--ghost" href="#about">この館について</a>
+    </div>
+    <div class="hero__stats">
+      <div class="hero__stat"><div class="n"><span id="count">12</span></div><div class="l">所蔵の名作</div></div>
+      <div class="hero__stat"><div class="n">2006—2019</div><div class="l">展示の年代</div></div>
+      <div class="hero__stat"><div class="n">入場無料</div><div class="l">いつでも開館中</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 展示室 -->
+<section class="section" id="gallery-sec">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="section__kicker">Permanent Collection</span>
+      <h2 class="section__title">常設展 ─ ネット広告の名作</h2>
+      <p class="section__desc">クリックでその場に動画が立ち上がります。掲載は各企業・YouTube公式の動画への埋め込み／リンクで、広告そのものの転載は行っていません。種別でしぼり込めます。</p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<!-- ミュージアムショップ -->
+<section class="section section--alt" id="shop">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="section__kicker">Museum Shop</span>
+      <h2 class="section__title">ミュージアムショップ</h2>
+      <p class="section__desc">名作の裏にある「伝わる技術」を、自分のものにするための棚。広告・コピー・マーケティングの定番書と、今日から作れる制作ツールを集めました。</p>
+    </div>
+
+    <p class="shop-intro">本のリンクはAmazonの該当ページへ。気になった一冊から、伝える力を育ててください。</p>
+    <div class="shelf" id="shelf"></div>
+
+    <h3 style="font-family:var(--serif);margin:48px 0 6px;font-size:20px;">作る道具をそろえる</h3>
+    <p class="shop-intro" style="margin-bottom:0;">名作を眺めるだけでなく、自分でも作ってみる。最初の一歩を踏み出すためのデザイン・動画ツール。</p>
+    <div class="tool-grid" id="toolGrid"></div>
+  </div>
+</section>
+
+<!-- この館について -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="section__kicker">About</span>
+      <h2 class="section__title">この館について</h2>
+    </div>
+    <div class="prose">
+      <p>「ネット広告博物館」は、日本のインターネット広告のなかでも、時代を象徴し・人々の記憶に残った名作を集めて展示・解説する、非営利のキュレーションサイトです。広告は売るための道具であると同時に、その時代の空気や、人を動かす技術の結晶でもあります。優れた一本を「なぜ伝説になったのか」という視点で読み解くことで、つくる人にも、見る人にも、新しい発見を届けたいと考えています。</p>
+
+      <h3>展示のしかたと著作権について</h3>
+      <p>本館では、広告クリエイティブそのものを無断で転載することはしていません。各作品は、企業やYouTubeの公式に公開された動画への埋め込み・リンクという形で紹介し、解説文は当館が独自にまとめています。掲載に関するご連絡・削除のご依頼は、運営までお寄せください。速やかに対応いたします。</p>
+
+      <h3>事実の正確さについて</h3>
+      <p>各作品の公開年・受賞歴・反響は、公開情報をもとに確認したうえで記載しています。記憶や時期に幅があるものは「〜頃」「〜〜年〜」と表記しています。誤りにお気づきの際はご指摘ください。</p>
+
+      <div class="disclosure">
+        <b>アフィリエイトプログラムについて。</b> 当サイトは、Amazonアソシエイト・プログラムをはじめとする各種アフィリエイトプログラムを利用しています。Amazonのアソシエイトとして、当サイトは適格販売により収入を得ています。ショップ内のリンクから商品をご購入いただいた場合、当サイトに紹介料が支払われることがありますが、お客様の購入価格が上がることはありません。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div>&copy; <span id="year">2026</span> ネット広告博物館 ／ RYOSEIWORLD</div>
+    <div><a href="#top">ページ上部へ戻る</a></div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
