@@ -1,17 +1,19 @@
 /* ネット広告博物館 / 広告ハント — Service Worker
    app shell をキャッシュしてオフラインでも開けるようにする。
    同一オリジンのみ扱い、外部CDN（フォント/Leaflet/YouTube/Supabase）は素通し。 */
-const CACHE = "adhunt-v1";
+const CACHE = "adhunt-v2";
 const SHELL = [
   "./",
   "./index.html",
   "./hunt.html",
   "./app.html",
+  "./privacy.html",
   "./style.css",
   "./hunt.css",
   "./app.js",
   "./hunt.js",
   "./config.js",
+  "./analytics.js",
   "./manifest.webmanifest",
   "./icons/icon-180.png",
   "./icons/icon-192.png",
